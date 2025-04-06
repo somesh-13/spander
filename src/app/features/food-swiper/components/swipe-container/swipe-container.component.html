@@ -1,0 +1,26 @@
+<!-- features/food-swiper/components/swipe-container/swipe-container.component.html -->
+<div class="swipe-container">
+    <div class="swipe-area">
+      <div *ngIf="hasMoreFood(); else noMoreFood">
+        <app-food-card 
+          [food]="currentFood" 
+          (liked)="onLiked($event)"
+          (disliked)="onDisliked($event)">
+        </app-food-card>
+      </div>
+      
+      <ng-template #noMoreFood>
+        <div class="no-food-message">
+          <h3>No more food to show!</h3>
+          <p>Try adjusting your filters or check back later for more options.</p>
+          <button class="reload-btn" (click)="loadMockData(); currentIndex = 0;">Reload Foods</button>
+        </div>
+      </ng-template>
+    </div>
+    
+    <app-swipe-controls 
+      *ngIf="hasMoreFood()"
+      (liked)="currentFood && onLiked(currentFood)"
+      (disliked)="currentFood && onDisliked(currentFood)">
+    </app-swipe-controls>
+  </div>
