@@ -1,4 +1,6 @@
+// layout/header/header.component.ts
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent {
-
+  activeTab = 'swipes';
+  
+  constructor(private router: Router) {}
+  
+  switchTab(tab: string): void {
+    this.activeTab = tab;
+    if (tab === 'swipes') {
+      this.router.navigate(['/food-swiper']);
+    } else if (tab === 'matches') {
+      this.router.navigate(['/favorites']);
+    }
+  }
 }

@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthService } from './core/auth/auth.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,14 +11,15 @@ import { AuthService } from './core/auth/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'Spander';
-  
+    activeTab: 'swipes' | 'matches' = 'swipes';
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
   
   ngOnInit(): void {
     // Scroll to top on route changes
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -27,7 +29,9 @@ export class AppComponent implements OnInit {
     // Check if user is authenticated on app startup
     this.checkAuthStatus();
   }
-  
+  setActiveTab(tab: 'swipes' | 'matches'): void {
+    this.activeTab = tab;
+  }
   private checkAuthStatus(): void {
     // If user has valid token but no user data, try to load user
     if (this.authService.hasValidToken()) {

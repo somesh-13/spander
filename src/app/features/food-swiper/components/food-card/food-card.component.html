@@ -1,25 +1,65 @@
 <!-- features/food-swiper/components/food-card/food-card.component.html -->
-<div class="food-card" 
-     appSwipe 
-     (swipeLeft)="onSwipeLeft()" 
-     (swipeRight)="onSwipeRight()">
-  <img [src]="food?.imageUrl" [alt]="food?.name" class="food-card__image">
-  <div class="food-card__content">
-    <h2 class="food-card__title">{{ food?.name }}</h2>
-    <p class="food-card__description">{{ food?.description }}</p>
-    <div class="food-card__tags">
-      <span *ngFor="let tag of food?.tags" class="food-card__tag">{{ tag }}</span>
+<div #cardElement class="card" [@cardAnimation]="animationState">
+  <div class="card-image">
+    <img [src]="food?.imageUrl" [alt]="food?.name">
+  </div>
+  
+  <div class="card-content">
+    <h2 class="food-title">{{ food?.name }}</h2>
+    <p class="food-description">{{ food?.description }}</p>
+    
+    <div class="food-tags">
+      <span *ngFor="let tag of food?.tags" class="tag">{{ tag }}</span>
     </div>
-    <div class="food-card__rating">
-      <span>Rating: {{ food?.rating }}/5</span>
+    
+    <div class="food-nutrition">
+      <div class="calories">
+        <span class="value">{{ food?.calories }}</span>
+        <span class="label">calories</span>
+      </div>
+      
+      <div *ngIf="food?.nutritionInfo" class="nutrition-breakdown">
+        <div class="nutrient protein">
+          <span class="value">{{ food?.nutritionInfo?.protein }}g</span>
+          <span class="label">protein</span>
+        </div>
+        <div class="nutrient carbs">
+          <span class="value">{{ food?.nutritionInfo?.carbs }}g</span>
+          <span class="label">carbs</span>
+        </div>
+        <div class="nutrient fat">
+          <span class="value">{{ food?.nutritionInfo?.fat }}g</span>
+          <span class="label">fat</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="food-rating">
+      Rating: {{ food?.rating }}/5
+    </div>
+    
+    <div class="food-question">
+      do you consider eating {{ food?.name }} healthy?
     </div>
   </div>
-  <div class="food-card__actions">
-    <button class="action-btn dislike-btn" (click)="onSwipeLeft()">
-      <span>✗</span>
+  
+  <div class="card-actions">
+    <button class="action-btn dislike" (click)="onSwipeLeft()">
+      <span>✕</span>
     </button>
-    <button class="action-btn like-btn" (click)="onSwipeRight()">
+    <button class="action-btn info">
+      <span>ⓘ</span>
+    </button>
+    <button class="action-btn like" (click)="onSwipeRight()">
       <span>♥</span>
     </button>
+  </div>
+  
+  <!-- Swipe indicators -->
+  <div class="like-indicator" [class.visible]="likeVisible">
+    <span class="indicator-icon">♥</span>
+  </div>
+  <div class="dislike-indicator" [class.visible]="dislikeVisible">
+    <span class="indicator-icon">✕</span>
   </div>
 </div>

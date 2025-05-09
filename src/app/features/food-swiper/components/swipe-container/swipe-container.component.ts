@@ -10,12 +10,17 @@ import { Food } from '../../../../shared/models/food.model';
 export class SwipeContainerComponent implements OnInit {
   foodItems: Food[] = [];
   currentIndex = 0;
-  
+  isLoading = true;
   constructor() {}
   
   ngOnInit(): void {
+     // Simulate loading
+     this.isLoading = true;
     // Load mock data for now
-    this.loadMockData();
+    setTimeout(() => {
+      this.loadMockData();
+      this.isLoading = false;
+    }, 1000);
   }
   
   loadMockData(): void {
@@ -27,7 +32,13 @@ export class SwipeContainerComponent implements OnInit {
         imageUrl: 'https://kitchenswagger.com/wp-content/uploads/2023/05/margherita-pizza-final.jpg',
         category: 'Italian',
         tags: ['pizza', 'vegetarian', 'cheese'],
-        rating: 4.5
+        rating: 4.5,
+        calories: 285,
+        nutritionInfo: {
+          protein: 12,
+          carbs: 35,
+          fat: 10
+        }
       },
       {
         id: 2,
@@ -36,7 +47,13 @@ export class SwipeContainerComponent implements OnInit {
         imageUrl: 'https://kitchenswagger.com/wp-content/uploads/2021/05/turkey-burgers-3.jpg',
         category: 'American',
         tags: ['burger', 'beef', 'fast food'],
-        rating: 4.2
+        rating: 4.2,
+        calories: 520,
+        nutritionInfo: {
+          protein: 25,
+          carbs: 42,
+          fat: 28
+        }
       },
       {
         id: 3,
@@ -45,7 +62,13 @@ export class SwipeContainerComponent implements OnInit {
         imageUrl: 'https://vismaifood.com/storage/app/uploads/public/d58/a6e/2b7/thumb__700_0_0_0_auto.jpg',
         category: 'Indian',
         tags: ['curry', 'spicy', 'chicken'],
-        rating: 4.7
+        rating: 4.7,
+        calories: 370,
+        nutritionInfo: {
+          protein: 22,
+          carbs: 25,
+          fat: 18
+        }
       }
     ];
   }
@@ -67,6 +90,7 @@ export class SwipeContainerComponent implements OnInit {
   hasMoreFood(): boolean {
     return this.currentIndex < this.foodItems.length;
   }
+  
   resetSwiper(): void {
     this.currentIndex = 0;
     this.loadMockData();
