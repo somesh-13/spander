@@ -16,7 +16,7 @@ export class HeaderComponent {
     this.activeTab = tab;
     if (tab === 'swipes') {
       this.router.navigate(['/food-swiper']);
-    } else if (tab === 'matches') {
+    } else if (tab === 'recommendations') {
       this.router.navigate(['/favorites']);
     }
   }

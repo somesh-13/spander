@@ -6,7 +6,6 @@ export interface Food {
   imageUrl: string;
   category: string;
   tags: string[];
-  rating: number;
   calories?: number;  // Add calories property
   nutritionInfo?: {
     protein?: number;

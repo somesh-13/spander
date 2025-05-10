@@ -11,7 +11,7 @@ import { AuthService } from './core/auth/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'Spander';
-    activeTab: 'swipes' | 'matches' = 'swipes';
+    activeTab: 'swipes' | 'recommendations' = 'swipes';
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     // Check if user is authenticated on app startup
     this.checkAuthStatus();
   }
-  setActiveTab(tab: 'swipes' | 'matches'): void {
+  setActiveTab(tab: 'swipes' | 'recommendations'): void {
     this.activeTab = tab;
   }
   private checkAuthStatus(): void {

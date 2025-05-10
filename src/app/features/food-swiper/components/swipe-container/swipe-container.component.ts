@@ -32,7 +32,6 @@ export class SwipeContainerComponent implements OnInit {
         imageUrl: 'https://kitchenswagger.com/wp-content/uploads/2023/05/margherita-pizza-final.jpg',
         category: 'Italian',
         tags: ['pizza', 'vegetarian', 'cheese'],
-        rating: 4.5,
         calories: 285,
         nutritionInfo: {
           protein: 12,
@@ -47,7 +46,7 @@ export class SwipeContainerComponent implements OnInit {
         imageUrl: 'https://kitchenswagger.com/wp-content/uploads/2021/05/turkey-burgers-3.jpg',
         category: 'American',
         tags: ['burger', 'beef', 'fast food'],
-        rating: 4.2,
+
         calories: 520,
         nutritionInfo: {
           protein: 25,
@@ -62,7 +61,6 @@ export class SwipeContainerComponent implements OnInit {
         imageUrl: 'https://vismaifood.com/storage/app/uploads/public/d58/a6e/2b7/thumb__700_0_0_0_auto.jpg',
         category: 'Indian',
         tags: ['curry', 'spicy', 'chicken'],
-        rating: 4.7,
         calories: 370,
         nutritionInfo: {
           protein: 22,

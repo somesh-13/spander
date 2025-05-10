@@ -17,7 +17,6 @@
         <span class="value">{{ food?.calories }}</span>
         <span class="label">calories</span>
       </div>
-      
       <div *ngIf="food?.nutritionInfo" class="nutrition-breakdown">
         <div class="nutrient protein">
           <span class="value">{{ food?.nutritionInfo?.protein }}g</span>
@@ -32,15 +31,9 @@
           <span class="label">fat</span>
         </div>
       </div>
+  
     </div>
-    
-    <div class="food-rating">
-      Rating: {{ food?.rating }}/5
-    </div>
-    
-    <div class="food-question">
-      do you consider eating {{ food?.name }} healthy?
-    </div>
+  
   </div>
   
   <div class="card-actions">
